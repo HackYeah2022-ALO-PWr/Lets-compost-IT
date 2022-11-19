@@ -1,11 +1,9 @@
 {
-  "expo": {
-    "name": "Lets-Compost-IT",
-    "slug": "Lets-Compost-IT",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  },
-  "name": "Lets-Compost-IT"
+    "expo": {
+        "name": "Lets-Compost-IT",
+        "slug": "Lets-Compost-IT",
+        "version": "1.0.0",
+        "assetBundlePatterns": ["**/*"]
+    },
+    "name": "Lets-Compost-IT"
 }
