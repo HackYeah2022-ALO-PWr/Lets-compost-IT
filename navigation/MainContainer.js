@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
 import { IconButton } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { CalendarPage, MyCompostersPage, TutorialsPage } from '../pages';
+import { CalendarPage, MyCompostersPage, ArticlesPage } from '../pages';
 
 const homeName = 'Home';
 const detailsName = 'Details';
@@ -60,7 +60,7 @@ export const MainContainer = () => {
                         name='My Composters'
                         component={MyCompostersPage}
                     />
-                    <Drawer.Screen name='Tutorials' component={TutorialsPage} />
+                    <Drawer.Screen name='Articles' component={ArticlesPage} />
                 </Drawer.Navigator>
             </NavigationContainer>
             <StatusBar style='auto' />
