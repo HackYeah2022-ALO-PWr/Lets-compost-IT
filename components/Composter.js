@@ -83,8 +83,8 @@ const CreateComposterEventModal = ({
                             amount,
                         });
                         setVisible(false);
-                        setType('');
-                        setAmount(10);
+                        // setType('');
+                        // setAmount(10);
                     }}
                 >
                     Add
@@ -111,27 +111,25 @@ export const Composter = ({ data, remove }) => {
     let avLvll = 0;
     let filled = 0;
     let cnratio = 0;
-    let dbg;
     events.forEach((event, i) => {
         const d = new Date(event.date * 1000);
         const now = new Date();
         const diff = Math.abs(d.getTime() - now.getTime());
         const diffDays = diff / (1000 * 3600 * 24);
-        dbg = diffDays;
         const lvl = Math.round(diffDays / 100);
         cnratio += dupa[event.type] * event.amount;
         avLvll += lvl * event.amount;
         filled += event.amount;
     });
 
-    const lvl = avLvll / filled;
+    let lvl = avLvll / filled;
     cnratio /= filled;
     filled = Math.round((filled / data.volume) * 100);
     let name = '';
     if (lvl >= 100) name = 'b';
     else if (lvl >= 50) name = 'y';
     else if (lvl >= 0) name = 'g';
-
+    
     if (filled > 80) name += '5';
     else if (filled > 60) name += '4';
     else if (filled > 40) name += '3';
@@ -143,24 +141,20 @@ export const Composter = ({ data, remove }) => {
         <List.Accordion
             title={data.name}
             left={(props) => <List.Icon {...props} icon='folder' />}
-            style={{ padding: 10 }}
             // onLongPress={remove}
             onLongPress={() => setDeleteModalOpen(true)}
         >
-            <View style={{ padding: 10 }}>
-                <Text>{data.name}</Text>
-                <Text>Volume: {data.volume}</Text>
-                <Text>dbg: {dbg}</Text>
+            <View style={{}}>
+                <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>Capacity: {data.volume}kg</Text>
                 <Image
                     resizeMode='center'
                     style={{ width: '100%', maxHeight: 210}}
                     source={imgs[name]}
                 />
-                <Text>{data.id}</Text>
-                <Text>{data.volume}</Text>
                 <Text>Filled in {filled}%</Text>
-                <Text>Progress {lvl || 0}%</Text>
+                <Text>Progress {Math.min(100, lvl) || 0}%</Text>
                 <Text>C:N ratio {cnratio || 1}:1</Text>
+                <Text>(carbon to nitrogen ratio)</Text>
                 <Button onPress={() => setModalOpen(true)}>Add material</Button>
 
                 <CreateComposterEventModal
