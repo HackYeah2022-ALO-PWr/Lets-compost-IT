@@ -1,4 +1,4 @@
-const dupa = {
+export const dupa = {
     'Vegetable Trimmings ': 12,
     'Food Scraps ': 15,
     'Coffee Grounds ': 20,
