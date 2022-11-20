@@ -24,6 +24,24 @@ const imgs = {
     empty: require('../assets/empty.png'),
 };
 
+const CreateDeleteModal = ({
+    visible,
+    setVisible,
+    remove,
+}) => {
+    return (
+        <Modal visible={visible} onDismiss={setVisible}>
+            <View style={{ padding: 20 }}>
+                <Button
+                    onPress={() => {remove(); setVisible(false)}}
+                >
+                    Remove
+                </Button>
+            </View>
+        </Modal>
+    );
+};
+
 const CreateComposterEventModal = ({
     visible,
     setVisible,
@@ -58,7 +76,7 @@ const CreateComposterEventModal = ({
                 <Button
                     onPress={() => {
                         create({
-                            date: new Date().valueOf(),
+                            date: new Date().valueOf() / 1000,
                             composterID,
                             type,
                             amount,
@@ -78,6 +96,7 @@ const CreateComposterEventModal = ({
 export const Composter = ({ data, remove }) => {
     const [events, setEvents] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     useEffect(() => {
         AsyncStorage.getItem('events', (err, v) => {
@@ -91,12 +110,13 @@ export const Composter = ({ data, remove }) => {
     let avLvll = 0;
     let filled = 0;
     let cnratio = 0;
-
+    let dbg;
     events.forEach((event, i) => {
         const d = new Date(event.date * 1000);
         const now = new Date();
-        const diff = d - now;
-        const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        const diff = Math.abs(d.getTime() - now.getTime());
+        const diffDays = diff / (1000 * 3600 * 24);
+        dbg = diffDays;
         const lvl = Math.round(diffDays / 100);
         cnratio += dupa[event.type] * event.amount;
         avLvll += lvl * event.amount;
@@ -105,7 +125,7 @@ export const Composter = ({ data, remove }) => {
 
     const lvl = avLvll / filled;
     cnratio /= filled;
-    filled /= data.volume;
+    filled = Math.round((filled / data.volume) * 100);
     let name = '';
     if (lvl >= 100) name = 'b';
     else if (lvl >= 50) name = 'y';
@@ -123,11 +143,13 @@ export const Composter = ({ data, remove }) => {
             title={data.name}
             left={(props) => <List.Icon {...props} icon='folder' />}
             style={{ padding: 10 }}
-            onLongPress={remove}
+            // onLongPress={remove}
+            onLongPress={() => setDeleteModalOpen(true)}
         >
             <View style={{ padding: 10 }}>
                 <Text>{data.name}</Text>
-                <Text>{name}</Text>
+                <Text>Volume: {data.volume}</Text>
+                <Text>dbg: {dbg}</Text>
                 <Image
                     resizeMode='center'
                     style={{ width: '100%', marginVertical: -120 }}
@@ -148,6 +170,12 @@ export const Composter = ({ data, remove }) => {
                     }}
                     setVisible={setModalOpen}
                     visible={modalOpen}
+                />
+
+                <CreateDeleteModal
+                    remove={remove}
+                    setVisible={setDeleteModalOpen}
+                    visible={deleteModalOpen}
                 />
             </View>
         </List.Accordion>

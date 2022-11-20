@@ -45,8 +45,8 @@ const articles = [
 export const ArticlesPage = () => {
     return (
         <ScrollView style={{ padding: 20 }}>
-            {articles.map((art) => (
-                <Card style={{ marginBottom: 50 }}>
+            {articles.map((art, i) => (
+                <Card key={i} style={{ marginBottom: 50 }}>
                     <Card.Title title={art.title} />
                     <Card.Content>
                         <Paragraph>{art.content}</Paragraph>
