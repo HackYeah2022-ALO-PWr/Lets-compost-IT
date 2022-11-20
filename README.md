@@ -32,6 +32,10 @@ Our app contains an education section with articles about homemade composting, t
 
 <img src="./screenshots/s4.jpg" width="30%" />
 
+## Technologies used
+
+React Native, Expo, React Native Paper
+
 <!-- ## WOW! effect
 
 We hope for maximum points in the WOW! effect category. We imaging the jury would do a backflip and say: "wow! this is so shitty". -->
