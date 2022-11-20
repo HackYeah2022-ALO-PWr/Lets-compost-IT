@@ -2,4 +2,4 @@
 
 ## Lets compost
 
-Our app contains
+The target of our application are poeple living in rural and suburban areas. 
