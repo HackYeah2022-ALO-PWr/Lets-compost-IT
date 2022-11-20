@@ -1,26 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import { List } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Composter = ({ data, remove }) => {
-    const [composter, setComposter] = useState(null);
     const [events, setEvents] = useState(null);
-
-    AsyncStorage.getItem('composters', (err, v) => {
-        if (err) return;
-        arr = JSON.parse(v);
-        arr.forEach(comp => {
-            if(comp.id === data.id) {
-                setComposters(comp);
-            }
-        });
-    });
 
     AsyncStorage.getItem('events', (err, v) => {
         if (err) return;
         arr = JSON.parse(v);
-        setEvents(arr.filter(event => event.composterID === composter.id));
+        setEvents(arr.filter(event => event.composterID === data.id));
     });
 
     let avLvll = 0;
@@ -37,7 +26,7 @@ export const Composter = ({ data, remove }) => {
     });
 
     const lvl = avLvll / filled;
-    filled /= composter.volume;
+    filled /= data.volume;
     let name = '';
     if(lvl >= 100) name = 'b';
     else if(lvl >= 50) name = 'y';
@@ -53,13 +42,13 @@ export const Composter = ({ data, remove }) => {
     
     return (
         <List.Accordion
-            title={composter.name}
+            title={data.name}
             left={(props) => <List.Icon {...props} icon='folder' />}
             style={{ padding: 10 }}
             onLongPress={remove}
         >
             <View style={{ padding: 10 }}>
-                <Text>{composter.name}</Text>
+                <Text>{data.name}</Text>
                 <Text>{name}</Text>
                 {/* <Image source={require(`../assets/${name}`)} /> */}
                 <Text>{data.name}</Text>
