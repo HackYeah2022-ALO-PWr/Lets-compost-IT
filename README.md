@@ -35,3 +35,6 @@ Our app contains an education section with articles about homemade composting.
 <!-- ## WOW! effect
 
 We hope for maximum points in the WOW! effect category. We imaging the jury would do a backflip and say: "wow! this is so shitty". -->
+
+Authors: Maciej Opaliński, Jakub Żojdzik
+Akademickie Liceum Ogólnokształcące Politechniki Wrocławskiej
