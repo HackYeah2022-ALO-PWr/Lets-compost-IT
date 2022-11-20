@@ -88,10 +88,6 @@ export const Composter = ({ data, remove }) => {
         });
     }, []);
 
-    useEffect(() => {
-        AsyncStorage.setItem('events', JSON.stringify(events));
-    }, [events]);
-
     let avLvll = 0;
     let filled = 0;
     let cnratio = 0;
@@ -146,7 +142,10 @@ export const Composter = ({ data, remove }) => {
 
                 <CreateComposterEventModal
                     composterID={data.id}
-                    create={(data) => setEvents((old) => [...old, data])}
+                    create={(data) => {
+                        setEvents((old) => [...old, data]);
+                        AsyncStorage.setItem('events', JSON.stringify(events));
+                    }}
                     setVisible={setModalOpen}
                     visible={modalOpen}
                 />
