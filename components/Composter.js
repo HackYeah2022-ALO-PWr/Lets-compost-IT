@@ -27,7 +27,7 @@ const imgs = {
 const CreateDeleteModal = ({ visible, setVisible, remove }) => {
     return (
         <Modal visible={visible} onDismiss={setVisible}>
-            <View style={{ padding: 20 }}>
+            <View style={{ marginLeft: 50, padding: 20 }}>
                 <Button
                     mode='contained'
                     onPress={() => {
@@ -53,7 +53,7 @@ const CreateComposterEventModal = ({
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
-        <Modal visible={visible} onDismiss={setVisible}>
+        <Modal presentationStyle='fullScreen' visible={visible} onDismiss={setVisible}>
             <View style={{ marginLeft: 50, padding: 20 }}>
                 <DropDown
                     label='Type'
@@ -156,7 +156,6 @@ export const Composter = ({ data, remove }) => {
                 <Text>C:N ratio {cnratio || 1}:1</Text>
                 <Text>(carbon to nitrogen ratio)</Text>
                 <Button onPress={() => setModalOpen(true)}>Add material</Button>
-
                 <CreateComposterEventModal
                     composterID={data.id}
                     create={(data) => {
