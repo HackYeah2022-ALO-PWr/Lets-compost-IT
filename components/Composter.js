@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { List } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const Composter = ({ data }) => {
+export const Composter = ({ data, remove }) => {
     const [composter, setComposter] = useState(null);
     const [events, setEvents] = useState(null);
 
@@ -50,17 +50,21 @@ export const Composter = ({ data }) => {
     else if(filled > 0) name += '1';
     else if(filled === 0) name = 'empty';
     name += '.jpg';
+    
     return (
         <List.Accordion
             title={composter.name}
             left={(props) => <List.Icon {...props} icon='folder' />}
-            id={composter.id}
             style={{ padding: 10 }}
+            onLongPress={remove}
         >
             <View style={{ padding: 10 }}>
                 <Text>{composter.name}</Text>
                 <Text>{name}</Text>
                 {/* <Image source={require(`../assets/${name}`)} /> */}
+                <Text>{data.name}</Text>
+                <Text>{data.id}</Text>
+                <Text>{data.volume}</Text>
             </View>
         </List.Accordion>
     );
