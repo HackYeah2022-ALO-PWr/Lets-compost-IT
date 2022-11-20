@@ -52,6 +52,7 @@ export const MainContainer = () => {
                     screenOptions={{
                         headerShown: true,
                         headerLeft: () => <MenuIcon />,
+                        unmountOnBlur: true,
                     }}
                     drawerContent={(props) => <MenuContent {...props} />}
                 >

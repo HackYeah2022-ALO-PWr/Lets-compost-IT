@@ -9,7 +9,7 @@ export const ArticlesPage = () => {
                 onPress={() => alert('This is the Tutorials page.')}
                 style={{ fontSize: 26, fontWeight: 'bold' }}
             >
-                Articles Page
+                Articles
             </Text>
         </View>
     );

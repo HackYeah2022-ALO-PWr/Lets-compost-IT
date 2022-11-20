@@ -22,7 +22,7 @@ const CreateComposterModal = ({ visible, setVisible, create }) => {
     const [volume, setVolume] = useState(10);
 
     return (
-        <Modal visible={visible} onDismiss={setVisible}>
+        <Modal visible={visible} onDismiss={() => setVisible(false)}>
             <View style={{ padding: 20 }}>
                 <TextInput
                     placeholder='Composter name'
@@ -38,6 +38,7 @@ const CreateComposterModal = ({ visible, setVisible, create }) => {
                 <Button
                     onPress={() => {
                         create({ id: uuid.v4(), name, volume });
+                        setVisible(false);
                         setName('');
                         setVolume(10);
                     }}
@@ -103,10 +104,7 @@ export const MyCompostersPage = () => {
             <CreateComposterModal
                 visible={visibleModal}
                 setVisible={setVisibleModal}
-                create={(data) => {
-                    createComposter(data);
-                    setVisibleModal(false);
-                }}
+                create={(data) => createComposter(data)}
             />
         </View>
     );
