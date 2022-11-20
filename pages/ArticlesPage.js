@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import base from '../styles/base';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { ScrollView } from 'react-native';
+import { Button, Card, Paragraph } from 'react-native-paper';
 
 const art1 = require('../assets/art1.webp');
 const art2 = require('../assets/art2.jpg');

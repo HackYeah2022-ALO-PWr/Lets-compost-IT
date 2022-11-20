@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import base from '../styles/base';
 import { ScrollView } from 'native-base';
 import { Card } from 'react-native-paper';
 

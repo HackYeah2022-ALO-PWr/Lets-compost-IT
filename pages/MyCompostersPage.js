@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import {
-    Portal,
     FAB,
-    List,
-    Divider,
     Modal,
     TextInput,
     Button,
@@ -12,10 +9,8 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as uuid from 'uuid';
 import 'react-native-get-random-values';
-import base from '../styles/base';
 
 import { Composter } from '../components';
-import { FormControl, Input, NumberInput } from 'native-base';
 
 const CreateComposterModal = ({ visible, setVisible, create }) => {
     const [name, setName] = useState('');

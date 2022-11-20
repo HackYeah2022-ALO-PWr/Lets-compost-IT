@@ -141,7 +141,6 @@ export const Composter = ({ data, remove }) => {
         <List.Accordion
             title={data.name}
             left={(props) => <List.Icon {...props} icon='folder' />}
-            // onLongPress={remove}
             onLongPress={() => setDeleteModalOpen(true)}
         >
             <View style={{marginBottom: -200, marginLeft: -50}}>

@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { Image } from 'react-native';
 import {
     NavigationContainer,
     useNavigation,
@@ -16,10 +15,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { CalendarPage, MyCompostersPage, ArticlesPage } from '../pages';
 
-const homeName = 'Home';
-const detailsName = 'Details';
-const settingsName = 'Settings';
-
 const MenuIcon = () => {
     const navigation = useNavigation();
     const openDrawer = useCallback(() => {
@@ -32,11 +27,6 @@ const MenuIcon = () => {
 const MenuContent = (props) => {
     return (
         <DrawerContentScrollView {...props}>
-            {/* <Image
-                resizeMode='cover'
-                style={{ width: '100%', height: 500 }}
-                source={require('../assets/composter.png')}
-            /> */}
             <DrawerItemList {...props} />
         </DrawerContentScrollView>
     );
