@@ -54,7 +54,7 @@ const CreateComposterEventModal = ({
 
     return (
         <Modal visible={visible} onDismiss={setVisible}>
-            <View style={{ padding: 20 }}>
+            <View style={{ marginLeft: 50, padding: 20 }}>
                 <DropDown
                     label='Type'
                     visible={showDropdown}
@@ -83,8 +83,8 @@ const CreateComposterEventModal = ({
                             amount,
                         });
                         setVisible(false);
-                        // setType('');
-                        // setAmount(10);
+                        setType('');
+                        setAmount(10);
                     }}
                 >
                     Add
@@ -144,7 +144,7 @@ export const Composter = ({ data, remove }) => {
             // onLongPress={remove}
             onLongPress={() => setDeleteModalOpen(true)}
         >
-            <View style={{}}>
+            <View style={{marginBottom: -200, marginLeft: -50}}>
                 <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>Capacity: {data.volume}kg</Text>
                 <Image
                     resizeMode='center'
