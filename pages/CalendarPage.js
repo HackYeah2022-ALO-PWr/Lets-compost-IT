@@ -23,13 +23,6 @@ export const CalendarPage = () => {
 
     return (
         <View style={{ padding: 20, height: '100%' }}>
-            <Text
-                onPress={() => alert('This is the Calendar page.')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}
-            >
-                Calendar
-            </Text>
-
             {events.length > 0 && (
                 <ScrollView style={{ marginTop: 20 }}>
                     {events

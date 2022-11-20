@@ -36,6 +36,7 @@ const CreateComposterModal = ({ visible, setVisible, create }) => {
                     onChangeText={setVolume}
                 />
                 <Button
+                    mode='contained'
                     onPress={() => {
                         create({ id: uuid.v4(), name, volume });
                         setVisible(false);
@@ -70,14 +71,7 @@ export const MyCompostersPage = () => {
     }, [composters]);
 
     return (
-        <View style={{ padding: 20, height: '100%' }}>
-            <Text
-                onPress={() => alert('This is the My Composters page.')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}
-            >
-                My Composters
-            </Text>
-
+        <View style={{ height: '100%' }}>
             {composters.length > 0 && (
                 <ScrollView style={{ marginTop: 20 }}>
                     {composters.map((data) => (

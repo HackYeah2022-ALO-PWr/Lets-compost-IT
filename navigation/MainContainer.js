@@ -56,7 +56,7 @@ export const MainContainer = () => {
                     }}
                     drawerContent={(props) => <MenuContent {...props} />}
                 >
-                    <Drawer.Screen name='Calendar' component={CalendarPage} />
+                    <Drawer.Screen name='History' component={CalendarPage} />
                     <Drawer.Screen
                         name='My Composters'
                         component={MyCompostersPage}

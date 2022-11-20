@@ -24,16 +24,16 @@ const imgs = {
     empty: require('../assets/empty.png'),
 };
 
-const CreateDeleteModal = ({
-    visible,
-    setVisible,
-    remove,
-}) => {
+const CreateDeleteModal = ({ visible, setVisible, remove }) => {
     return (
         <Modal visible={visible} onDismiss={setVisible}>
             <View style={{ padding: 20 }}>
                 <Button
-                    onPress={() => {remove(); setVisible(false)}}
+                    mode='contained'
+                    onPress={() => {
+                        remove();
+                        setVisible(false);
+                    }}
                 >
                     Remove
                 </Button>
@@ -74,6 +74,7 @@ const CreateComposterEventModal = ({
                     onChangeText={setAmount}
                 />
                 <Button
+                    mode='contained'
                     onPress={() => {
                         create({
                             date: new Date().valueOf() / 1000,
@@ -152,7 +153,7 @@ export const Composter = ({ data, remove }) => {
                 <Text>dbg: {dbg}</Text>
                 <Image
                     resizeMode='center'
-                    style={{ width: '100%', marginVertical: -120 }}
+                    style={{ width: '100%', maxHeight: 210}}
                     source={imgs[name]}
                 />
                 <Text>{data.id}</Text>
