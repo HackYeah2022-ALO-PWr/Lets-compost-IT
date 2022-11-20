@@ -4,10 +4,10 @@ import { List } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Composter = ({ data, remove }) => {
-    const [events, setEvents] = useState(null);
+    const [events, setEvents] = useState([]);
 
     AsyncStorage.getItem('events', (err, v) => {
-        if (err) return;
+        if (err || !v) return;
         arr = JSON.parse(v);
         setEvents(arr.filter(event => event.composterID === data.id));
     });
@@ -50,7 +50,7 @@ export const Composter = ({ data, remove }) => {
             <View style={{ padding: 10 }}>
                 <Text>{data.name}</Text>
                 <Text>{name}</Text>
-                {/* <Image source={require(`../assets/${name}`)} /> */}
+                <Image source={require(`../assets/empty.jpg`)} />
                 <Text>{data.name}</Text>
                 <Text>{data.id}</Text>
                 <Text>{data.volume}</Text>
