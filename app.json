@@ -3,7 +3,8 @@
         "name": "Lets-Compost-IT",
         "slug": "Lets-Compost-IT",
         "version": "1.0.0",
-        "assetBundlePatterns": ["**/*"]
+        "assetBundlePatterns": ["**/*"],
+        "icon": "./assets/composter.png"
     },
     "name": "Lets-Compost-IT"
 }
